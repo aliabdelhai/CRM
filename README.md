@@ -24,7 +24,15 @@ npm start
 
 ### Tools and Libraries
 
-- Client-Side: ReactJS
-- Server: NodeJs with Express
+- Client Side - React with Mobx, Material UI, axios
+- Server - NodeJs With Express
+- DataBase - SQL
+
+
+### Screenshots
+
+## <p align="center"><img src="https://res.cloudinary.com/dnngdbnuq/image/upload/v1612105099/Screen_Shot_2021-01-31_at_4.57.27_PM_jvatth.png" width="300"> </p>
+## <p align="center"><img src="https://res.cloudinary.com/dnngdbnuq/image/upload/v1612105182/Screen_Shot_2021-01-31_at_4.57.47_PM_q3glyh.png" width="300"> </p>
+## <p align="center"><img src="https://res.cloudinary.com/dnngdbnuq/image/upload/v1612105189/Screen_Shot_2021-01-31_at_4.57.57_PM_pvvk3z.png" width="300"> </p>
 
 
