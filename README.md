@@ -1,98 +1,38 @@
-# Getting Started with Create React App
+# CRM System — Full-stack JavaScript development with MobX
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A customer relationship management (CRM) System for sporting goods store include contact management system and order management system.
+The front-end use HTML5 technologies: HTML5, CSS3, React.JS, jQuery and Bootstrap to build a single page web app that communicate with the back-end via RESTful API.
+The back-end use JavaScript technologies: Node.js, Express.js, SQL database.
 
-## Available Scripts
+## Requirements
 
-In the project directory, you can run:
+- [Node and npm](http://nodejs.org)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to Use
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### To run on localhost:
 
-### `npm test`
+1. run:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm install
+npm start
+```
 
-### `npm run build`
+2. open `http://localhost:3000` in your browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tools and Libraries
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Client Side - React with Mobx, Material UI, axios
+- Server - NodeJs With Express
+- DataBase - SQL
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## <p align="center"><img src="https://res.cloudinary.com/dnngdbnuq/image/upload/v1612105099/Screen_Shot_2021-01-31_at_4.57.27_PM_jvatth.png" width="300"> </p>
+## <p align="center"><img src="https://res.cloudinary.com/dnngdbnuq/image/upload/v1612105182/Screen_Shot_2021-01-31_at_4.57.47_PM_q3glyh.png" width="300"> </p>
+## <p align="center"><img src="https://res.cloudinary.com/dnngdbnuq/image/upload/v1612105189/Screen_Shot_2021-01-31_at_4.57.57_PM_pvvk3z.png" width="300"> </p>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-# react-crm-starter
-
-## Data
-To load the data into a file, you can use this code:
-<!-- HTML generated using hilite.me --><div style="overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">//use setTimeout to simulate an API call - you can, of course, do this without the setTimeout, but using setTimeout will simplify your transition to connecting your to your server later on</span>
-setTimeout(() =&gt; {
-    <span style="color: #008800; font-weight: bold">  let</span> data = require(&#39;../data.json&#39;)
-    <span style="color: #888888">  //populate state with data</span>
-}, <span style="color: #0000DD; font-weight: bold">100</span>)
-</pre></div>
-
-Where do you load data in React?
-
-<hr>
-
-## CSS
-- Use google-fonts API to get the `Montserrat` font
-- Use `#ecf0f1` for your app's background-color
-- Use `#0a1612` for the nav-bar's background color
-- Use `#F7CE3E` for the table's header background-color 
-- Use these for your badges background colors: `#2ecc71`, `#3498db`, `#e74c3c`, `#f1c40f`
-- And these colors for your charts:
-    - Top Salespeople: `#003f5c`
-    - Sales By X: `#955196`
-    - Sales over time: `#ff6e54`
-    - Client Distribution: `#795548`, `#34495e`, `#95a5a6` 
-- Check <a href="http://tobiasahlin.com/spinkit/" target="_blank">this</a> out for simple to implement loaders
