@@ -1,8 +1,6 @@
 
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { observer, inject } from 'mobx-react'
-
-import axios from "axios";
 import "../styles/actions.css";
 
 function Update(props) {
