@@ -1,8 +1,20 @@
 const express = require('express');
 const router = express.Router()
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('mysql://root:1234@localhost/mysql')
-
+//const sequelize = new Sequelize('mysql://sql2394338:yQ9%mB2*@sql2.freesqldatabase.com/mysql')
+const sequelize = new Sequelize(
+    "sql2394338",
+    "sql2394338",
+    "yQ9%mB2*",
+    {
+        port: 3306,
+        host: "sql2.freesqldatabase.com",
+        logging: console.log,
+        define: {
+            timestamps: false
+        }    
+    }
+);
 
 router.get('/clients', async (req, res) => {
     try {
