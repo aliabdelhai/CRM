@@ -14,6 +14,9 @@ app.use(function (req, res, next) {
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use('/', api)
+
+app.use(express.static(path.join(__dirname,'build')))
+
 const port = 4200;
 
 app.listen((process.env.PORT || port), function () {
