@@ -19,8 +19,11 @@
     "sequelize": "^6.3.5",
     "web-vitals": "^0.2.4"
   },
+  "engine":{
+    "node":"14.15.0"
+  },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

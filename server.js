@@ -14,11 +14,11 @@ app.use(function (req, res, next) {
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use('/', api)
-
-
 const port = 4200;
-app.listen(port, function(){
-    console.log(`Running server on port ${port}`)
+
+app.listen((process.env.PORT || port), function () {
+    console.log(`server runs on port : ${port}`)
 })
+
 
 

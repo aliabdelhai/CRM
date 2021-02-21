@@ -19,7 +19,7 @@ function Clients(props) {
     }
 
     useEffect(async () => {
-        let clientsData = await axios.get('http://localhost:4200/clients')
+        let clientsData = await axios.get('/clients')
         props.clientsStore.clients = clientsData.data
     }, [])
 
@@ -50,6 +50,7 @@ function Clients(props) {
                 <span>Sold</span>
                 <span>Owner</span>
             </div>
+            <div id ='clients'>
             {search === "" && select == 'sold'
                 ? props.clientsStore.clients.filter(fd => fd[select]).map(c => <Client key={c._id} client={c} />)
                 : search === ""
@@ -61,6 +62,7 @@ function Clients(props) {
                             .includes(search))
                         .map(c => <Client key={c._id} client={c} />)
             }
+            </div>
 
 
         </div>

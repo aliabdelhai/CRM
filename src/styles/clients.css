@@ -47,3 +47,8 @@ body {
     justify-content: center;
     align-content: center;
 }
+
+#clients{
+    height: 500px;
+    overflow:auto;
+  }

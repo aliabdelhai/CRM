@@ -26,7 +26,7 @@ export class ClientsStore {
     async addClient(input){
         const client = new ClientStore(input.name, input.surName, input.owner, input.country)
         console.log(client)
-        await axios.post("http://localhost:4200/client", client)
+        await axios.post("/client", client)
     }
 
     get countEmail() {
@@ -82,7 +82,7 @@ export class ClientsStore {
 
     updateOwner = async (input) => {
         if (input.name) {
-            await axios.put(`http://localhost:4200/owner/${this.findName(input)}/${input.transfer}`)
+            await axios.put(`/owner/${this.findName(input)}/${input.transfer}`)
             input.transfer = ''
             input.name = ''
         } else {
@@ -93,7 +93,7 @@ export class ClientsStore {
 
     updateEmail = async (input) => {
         if (input.name) {
-            await axios.put(`http://localhost:4200/email/${this.findName(input)}/${input.email}`);
+            await axios.put(`/email/${this.findName(input)}/${input.email}`);
             input.email = ''
             input.name = ''
         } else {
@@ -103,7 +103,7 @@ export class ClientsStore {
 
     declareSale = async (input) => {
         if (input.name) {
-            await axios.put(`http://localhost:4200/declare/${this.findName(input)}`);
+            await axios.put(`/declare/${this.findName(input)}`);
             input.name = ''
         } else {
             alert("Please Insert Client Name")
@@ -113,7 +113,7 @@ export class ClientsStore {
     update = async (client, input) => {
         client.country = input.country;
         const name = input.name + " " + input.surName
-        await axios.put(`http://localhost:4200/client/${name}`, client);
+        await axios.put(`/client/${name}`, client);
         client.first = `${input.name}`;
         client.last = `${input.surName}`;
     };
