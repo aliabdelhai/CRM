@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:1234@localhost/mysql')
 
-const data = require('./src/data.json');
-const countries = require('./countries.js');
+const data = require('../../src/data.json');
+const countries = require('../../countries.js');
 
 
 sequelize
@@ -51,3 +51,4 @@ const addClient = async (client) => {
 // countries.forEach(c => addValue('country', c))
 // owner.forEach(o => addValue('owner', o))
 // data.forEach(d => addClient(d))
+

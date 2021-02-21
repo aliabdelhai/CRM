@@ -3,46 +3,59 @@ const router = express.Router()
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL)
 
-const help = async function () {
-    try{
-    let query = `CREATE TABLE owner(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    owner VARCHAR(40));`
-    await sequelize.query(query)
-    query = `CREATE TABLE country (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        country VARCHAR(40)
-    );`
-    await sequelize.query(query)
-    query = `CREATE TABLE email_type(
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        email_type VARCHAR(1)
-    );`
-    await sequelize.query(query)
-    query = `CREATE TABLE client(
-        id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-        last VARCHAR(40),
-        first VARCHAR(40),
-        email VARCHAR(40),
-        sold BOOLEAN,
-        date VARCHAR(40),
-        email_type_id INT,
-        owner_id INT,
-        country_id INT,
-    
-        FOREIGN KEY(email_type_id) REFERENCES email_type(id),
-        FOREIGN KEY(owner_id) REFERENCES owner(id),
-        FOREIGN KEY(country_id) REFERENCES country(id)
-    );`
-    await sequelize.query(query)
+const data = require('../../src/data.json');
+const countries = require('../../countries');
 
-        }catch{
 
-        }
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    })
 
+
+
+let owner = data.map(d => d.owner)
+owner = owner.filter((elem, index, self) => index === self.indexOf(elem))
+
+let emailType = data.map(d => d.emailType)
+emailType = emailType.filter((elem, index, self) => index === self.indexOf(elem))
+
+const addValue = async function (table, type) {
+    let query =`INSERT INTO ${table} VALUES (null, '${type}')`
+    let result = await sequelize.query(query)
+    return result[0]
 }
 
-help()
+const findByID = async (table, name, value) => {
+    let query = `SELECT id FROM ${table} WHERE ${name} = "${value}"`
+    let results = await sequelize.query(query)
+    return results[0][0].id
+}
+
+const addClient = async (client) => {
+    let emailType = client.emailType !== null ? await findByID('email_type', 'email_type', client.emailType) : null
+    let owner = await findByID('owner', 'owner', client.owner)
+    let country = await findByID('country', 'country', client.country)
+    let date = new Date (client.firstContact).toLocaleDateString()
+    let nameSplit = client.name.split(' ')
+
+    let query =`INSERT INTO client
+    VALUES (null, '${nameSplit[1]}', '${nameSplit[0]}', '${client.email}', ${client.sold}, '${date}', ${emailType}, ${owner}, ${country})`
+    let result = await sequelize.query(query)
+    return result[0]
+}
+
+emailType.forEach(e => addValue('email_type', e))
+countries.forEach(c => addValue('country', c))
+owner.forEach(o => addValue('owner', o))
+data.forEach(d => addClient(d))
+
+
+
 
 
 router.get('/clients', async (req, res) => {
