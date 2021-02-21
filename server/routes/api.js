@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('mysql://root:1234@localhost/mysql')
+const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL)
 
 
 router.get('/clients', async (req, res) => {

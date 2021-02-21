@@ -17,6 +17,10 @@ app.use('/', api)
 
 app.use(express.static(path.join(__dirname,'build')))
 
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 const port = 4200;
 
 app.listen((process.env.PORT || port), function () {
