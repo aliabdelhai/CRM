@@ -1,5 +1,5 @@
 
---use mysql;
+-- use mysql;
 
 -- CREATE TABLE owner (
 --     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -3,6 +3,47 @@ const router = express.Router()
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL)
 
+const help = async function () {
+    try{
+    let query = `CREATE TABLE owner(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    owner VARCHAR(40));`
+    await sequelize.query(query)
+    query = `CREATE TABLE country (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        country VARCHAR(40)
+    );`
+    await sequelize.query(query)
+    query = `CREATE TABLE email_type(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        email_type VARCHAR(1)
+    );`
+    await sequelize.query(query)
+    query = `CREATE TABLE client(
+        id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+        last VARCHAR(40),
+        first VARCHAR(40),
+        email VARCHAR(40),
+        sold BOOLEAN,
+        date VARCHAR(40),
+        email_type_id INT,
+        owner_id INT,
+        country_id INT,
+    
+        FOREIGN KEY(email_type_id) REFERENCES email_type(id),
+        FOREIGN KEY(owner_id) REFERENCES owner(id),
+        FOREIGN KEY(country_id) REFERENCES country(id)
+    );`
+    await sequelize.query(query)
+
+        }catch{
+
+        }
+
+}
+
+help()
+
 
 router.get('/clients', async (req, res) => {
     try {
@@ -12,14 +53,14 @@ router.get('/clients', async (req, res) => {
                      `
         let results = await sequelize.query(query)
         let clients = []
-        for(let i=0; i< results[0].length; i++) {
-            if(results[0][i].email_type_id == null){
-                clients.push({...results[0][i], email_type: "-"})
+        for (let i = 0; i < results[0].length; i++) {
+            if (results[0][i].email_type_id == null) {
+                clients.push({ ...results[0][i], email_type: "-" })
             }
-            else{
+            else {
                 let query2 = `SELECT email_type FROM email_type WHERE id = ${results[0][i].email_type_id}`
                 let results2 = await sequelize.query(query2)
-                clients.push({...results[0][i], email_type: results2[0][0].email_type})
+                clients.push({ ...results[0][i], email_type: results2[0][0].email_type })
 
             }
         }
